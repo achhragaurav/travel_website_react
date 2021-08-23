@@ -23,7 +23,30 @@ const LoginUser = (props) => {
         console.log(res);
       });
   };
+  const facebookLogin = (e) => {
+    e.preventDefault();
+    const provider = new firebase.auth.FacebookAuthProvider();
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        var credential = result.credential;
+        var user = result.user;
+        var accessToken = credential.accessToken;
+        console.log(user, accessToken);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
 
+        // ...
+      });
+  };
   return (
     <section className="login-comp-section">
       <form>
@@ -59,10 +82,23 @@ const LoginUser = (props) => {
           <button className="sign-in" type="submit" onClick={handleLoginSubmit}>
             Sign In
           </button>
-          <button onClick={googleLogin}>
+          <button onClick={googleLogin} style={{ border: "none" }}>
             <img
-              style={{ width: "50px", height: "50px" }}
+              style={{
+                width: "30px",
+                height: "30px",
+              }}
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
+              alt=""
+            />
+          </button>
+          <button onClick={facebookLogin} style={{ border: "none" }}>
+            <img
+              style={{
+                width: "30px",
+                height: "30px",
+              }}
+              src="https://1000logos.net/wp-content/uploads/2021/04/Facebook-logo.png"
               alt=""
             />
           </button>
