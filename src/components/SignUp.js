@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { auth } from "../Login/firebase";
+import SocialContainer from "./SocialContainer";
 
 const SignUp = (props) => {
   const [email, setEmail] = useState("");
@@ -63,6 +64,7 @@ const SignUp = (props) => {
             Login
           </button>
         </div>
+        <SocialContainer name="Login" />
       </form>
     </section>
   );

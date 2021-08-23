@@ -1,0 +1,31 @@
+.social-container {
+  margin: 1rem;
+  align-self: center;
+  width: 60%;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid rgb(216, 216, 216);
+  border-radius: 7px;
+}
+.social-matter-div {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: black;
+}
+
+.social-buttons-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 50%;
+}
+.social-container button {
+  background: white;
+}
