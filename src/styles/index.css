@@ -8,4 +8,10 @@ body {
   color: #fff;
   font-weight: 700;
 }
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+}
+
 /*# sourceMappingURL=index.css.map */

@@ -1,33 +1,46 @@
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 import Login from "./pages/Login";
 import { GlobalContextMain } from "./components/Context";
+import Scrollbar from "smooth-scrollbar";
+
+const smoothScrollLoader = () => {
+  Scrollbar.init(document.querySelector(".App"), {
+    damping: 0.05,
+    continuousScrolling: false,
+  });
+};
 
 function App() {
+  useEffect(() => {
+    smoothScrollLoader();
+  }, []);
   return (
     <GlobalContextMain>
       <div className="App">
-        <Router>
-          <Navbar />
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/contact">
-              <Contact />
-            </Route>
-            <Route path="/products">
-              <Products />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-          </Switch>
-        </Router>
+        <main className="main-scrollbar">
+          <Router>
+            <Navbar />
+            <Switch>
+              <Route path="/" exact>
+                <Home />
+              </Route>
+              <Route path="/contact">
+                <Contact />
+              </Route>
+              <Route path="/products">
+                <Products />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+            </Switch>
+          </Router>
+        </main>
       </div>
     </GlobalContextMain>
   );
