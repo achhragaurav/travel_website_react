@@ -64,7 +64,7 @@ const SignUp = (props) => {
             Login
           </button>
         </div>
-        <SocialContainer name="Login" />
+        <SocialContainer name="Sign Up" />
       </form>
     </section>
   );

@@ -86,6 +86,16 @@
   background: #0034e0b2 !important;
   border: none !important;
 }
+.register {
+  border-radius: 10px !important;
+  padding: 1rem 1.5rem !important;
+  color: white !important;
+  background: #0034e0b2 !important;
+  border: none !important;
+}
+.login-move {
+  border: none !important;
+}
 .login-image-content {
   width: 50%;
   height: 15%;
@@ -151,8 +161,9 @@
 }
 .login-comp-section form,
 .sign-up-comp-section form {
-  width: 100%;
-  height: 25rem;
+  width: 80%;
+  min-height: 37rem;
+  max-height: 37rem;
   display: flex;
   align-items: center;
   justify-content: space-around;

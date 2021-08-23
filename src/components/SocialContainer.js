@@ -41,7 +41,7 @@ const SocialContainer = (props) => {
   return (
     <div className={classes["social-container"]}>
       <div className={classes["social-matter-div"]}>
-        <h3>Or {props.name ? props.name : "Sign Up"} using any of these</h3>
+        <h3>Or {props.name ? props.name : "Login"} using any of these</h3>
       </div>
       <div className={classes["social-buttons-div"]}>
         <button onClick={googleLogin} style={{ border: "none" }}>

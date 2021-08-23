@@ -37,7 +37,7 @@ const LoginUser = (props) => {
         />
         <div className="buttons">
           <button
-            className="register"
+            className="login-move"
             onClick={(e) => {
               e.preventDefault();
               props.toggle("0%");
