@@ -1,8 +1,11 @@
 import React from "react";
 import firebase from "firebase/app";
 import classes from "./SocialContainer.module.css";
+import { useGlobalContext } from "./Context";
 
 const SocialContainer = (props) => {
+  const { isLoggedIn, setIsLoggedIn } = useGlobalContext();
+
   const googleLogin = (e) => {
     e.preventDefault();
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -11,6 +14,12 @@ const SocialContainer = (props) => {
       .signInWithPopup(provider)
       .then((res) => {
         console.log(res);
+        firebase
+          .database()
+          .ref("Users/" + res.user.uid)
+          .set({ uid: res.user.uid, name: res.user.displayName });
+
+        setIsLoggedIn(true);
       });
   };
   const facebookLogin = (e) => {
@@ -24,6 +33,7 @@ const SocialContainer = (props) => {
         var user = result.user;
         var accessToken = credential.accessToken;
         console.log(user, accessToken);
+        setIsLoggedIn(true);
       })
       .catch((error) => {
         // Handle Errors here.
