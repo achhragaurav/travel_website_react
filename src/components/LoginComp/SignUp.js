@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth } from "../Login/firebase";
+import { auth } from "../../Login/firebase";
 import SocialContainer from "./SocialContainer";
 
 const SignUp = (props) => {

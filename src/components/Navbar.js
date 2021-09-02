@@ -2,7 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import LoggedInCard from "./LoginComp/LoggedInCard";
-import { useGlobalContext } from "./Context";
+import { useGlobalContext } from "../store/Context";
 
 const Navbar = () => {
   const { isLoggedIn, setIsLoggedIn } = useGlobalContext();

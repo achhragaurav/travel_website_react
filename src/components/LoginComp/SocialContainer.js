@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useCallback } from "react";
 import firebase from "firebase/app";
 import classes from "./SocialContainer.module.css";
-import { useGlobalContext } from "./Context";
+import { useGlobalContext } from "../../store/Context";
 
 const SocialContainer = (props) => {
   const { isLoggedIn, setIsLoggedIn } = useGlobalContext();
 
-  const googleLogin = (e) => {
+  const googleLogin = useCallback((e) => {
     e.preventDefault();
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase
@@ -21,8 +21,8 @@ const SocialContainer = (props) => {
 
         setIsLoggedIn(true);
       });
-  };
-  const facebookLogin = (e) => {
+  }, []);
+  const facebookLogin = useCallback((e) => {
     e.preventDefault();
     const provider = new firebase.auth.FacebookAuthProvider();
     firebase
@@ -46,8 +46,7 @@ const SocialContainer = (props) => {
         console.log(errorCode, errorMessage, email, credential);
         // ...
       });
-  };
-
+  }, []);
   return (
     <div className={classes["social-container"]}>
       <div className={classes["social-matter-div"]}>

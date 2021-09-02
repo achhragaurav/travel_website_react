@@ -1,0 +1,9 @@
+.list-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 1rem;
+  grid-auto-flow: dense;
+  padding: 1rem;
+  align-content: center;
+  justify-items: center;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobalContext } from "../components/Context";
+import { useGlobalContext } from "../store/Context";
 import MainContainer from "../components/MainPageComp/MainContainer";
 import "./Home.css";
 

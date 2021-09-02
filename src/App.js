@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 import Login from "./pages/Login";
-import { GlobalContextMain } from "./components/Context";
+import { GlobalContextMain } from "./store/Context";
 import Scrollbar from "smooth-scrollbar";
 
 const smoothScrollLoader = () => {
