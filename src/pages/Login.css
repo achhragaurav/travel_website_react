@@ -37,7 +37,7 @@
       rgba(4, 0, 255, 0.151),
       rgba(0, 110, 255, 0.171)
     ),
-    url("../assets/pexels-samuel-theo-manat-silitonga-789555.jpg") center/cover;
+    url("https://source.unsplash.com/900x1000/?nature,water") center/cover;
   display: flex;
   align-items: center;
   justify-content: space-around;
