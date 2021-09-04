@@ -1,10 +1,15 @@
 import React from "react";
+import classes from "./SocialContainer.module.css";
 
 const SocailContact = () => {
   return (
-    <div>
-      <p>Instagram</p>
-      <p>Facebook</p>
+    <div className={classes["socialContainer"]}>
+      <p>
+        <a href="www.instagram.com">Instagram</a>
+      </p>
+      <p>
+        <a href="www.facebook.com">Facebook</a>
+      </p>
     </div>
   );
 };

@@ -4,7 +4,7 @@
 .contact-section-main {
   display: flex;
   width: 100vw !important;
-  height: 95vh;
+  height: 90.35vh;
   font-family: "Lora", serif;
 }
 .contact-design {
@@ -30,10 +30,41 @@
   padding-bottom: 0rem;
 }
 .contact-design-circles {
-  height: 30% !important;
+  height: 50% !important;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.contact-design-circles div {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+.contact-design-circles .circleDotted {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  border: 2px dashed white;
+  position: relative;
+}
+.contact-design-circles .circleSimpleOne {
+  position: relative;
+  left: 5%;
+}
+.contact-design-circles .circleSimpleTwo {
+  position: relative;
+  right: 5%;
 }
 .contact-design-policy {
-  height: 30% !important;
+  height: 20% !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 .contact-design-policy p {
+  color: rgb(87, 87, 87);
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
 }
