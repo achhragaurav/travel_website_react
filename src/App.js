@@ -7,6 +7,8 @@ import Products from "./pages/Products";
 import Login from "./pages/Login";
 import { GlobalContextMain } from "./store/Context";
 import Scrollbar from "smooth-scrollbar";
+import Collection from "./pages/Collection";
+import Profile from "./pages/Profile";
 
 const smoothScrollLoader = () => {
   Scrollbar.init(document.querySelector(".App"), {
@@ -37,6 +39,12 @@ function App() {
               </Route>
               <Route path="/login">
                 <Login />
+              </Route>
+              <Route path="/collection">
+                <Collection />
+              </Route>
+              <Route path="/profile">
+                <Profile />
               </Route>
             </Switch>
           </Router>

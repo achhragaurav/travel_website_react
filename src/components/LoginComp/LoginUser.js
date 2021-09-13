@@ -8,7 +8,6 @@ const LoginUser = (props) => {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-
     auth.signInWithEmailAndPassword(loginEmail, loginPassword).then((res) => {
       console.log(res);
     });

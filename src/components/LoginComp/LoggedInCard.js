@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import classes from "./LoggedInCard.module.css";
 import LoginCardButton from "./LoginCardButton";
 import ProfileLogo from "../../assets/ProfileLogo.png";
@@ -21,8 +22,15 @@ const LoggedInCard = (props) => {
         style={{ visibility: cardMenuIsVisible ? "visible" : "hidden" }}
       >
         <ul>
+          <Link to="/profile">
+            <li>
+              <LoginCardButton value="Profile" />
+            </li>
+          </Link>
+          <Link to="/collection">
+            <LoginCardButton value="Collection" />
+          </Link>
           <li>
-            <LoginCardButton value="Profile" />
             <LoginCardButton value="Logout" />
           </li>
         </ul>

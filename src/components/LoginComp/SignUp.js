@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
 import { auth } from "../../Login/firebase";
+import useSendData from "./hooks/useSendData";
 import SocialContainer from "./SocialContainer";
+import { useGlobalContext } from "../../store/Context";
 
 const SignUp = (props) => {
+  const history = useHistory();
+  const sendData = useSendData();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { isLoggedIn, setIsLoggedIn } = useGlobalContext();
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
@@ -12,7 +19,12 @@ const SignUp = (props) => {
       alert("Invalid Credentials Input can't be empty");
     } else {
       auth.createUserWithEmailAndPassword(email, password).then((res) => {
-        console.log(res);
+        if (res.user && res.additionalUserInfo.isNewUser) {
+          console.log(res);
+          sendData(res.user.uid, res.user.email);
+          history.push("/");
+          setIsLoggedIn(true);
+        }
       });
     }
   };
