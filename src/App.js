@@ -5,10 +5,11 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 import Login from "./pages/Login";
-import { GlobalContextMain } from "./store/Context";
+import { useGlobalContext } from "./store/Context";
 import Scrollbar from "smooth-scrollbar";
 import Collection from "./pages/Collection";
 import Profile from "./pages/Profile";
+import Error from "../src/pages/Error";
 
 const smoothScrollLoader = () => {
   Scrollbar.init(document.querySelector(".App"), {
@@ -18,39 +19,37 @@ const smoothScrollLoader = () => {
 };
 
 function App() {
+  const { isLoggedIn } = useGlobalContext();
+
   useEffect(() => {
     smoothScrollLoader();
   }, []);
   return (
-    <GlobalContextMain>
-      <div className="App">
-        <main className="main-scrollbar">
-          <Router>
-            <Navbar />
-            <Switch>
-              <Route path="/" exact>
-                <Home />
-              </Route>
-              <Route path="/contact">
-                <Contact />
-              </Route>
-              <Route path="/products">
-                <Products />
-              </Route>
-              <Route path="/login">
-                <Login />
-              </Route>
-              <Route path="/collection">
-                <Collection />
-              </Route>
-              <Route path="/profile">
-                <Profile />
-              </Route>
-            </Switch>
-          </Router>
-        </main>
-      </div>
-    </GlobalContextMain>
+    <div className="App">
+      <main className="main-scrollbar">
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/products">
+              <Products />
+            </Route>
+            <Route path="/login">{!isLoggedIn ? <Login /> : <Error />}</Route>
+            <Route path="/collection">
+              {isLoggedIn ? <Collection /> : <Error />}
+            </Route>
+            <Route path="/profile">
+              {isLoggedIn ? <Profile /> : <Error />}
+            </Route>
+          </Switch>
+        </Router>
+      </main>
+    </div>
   );
 }
 

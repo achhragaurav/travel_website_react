@@ -5,13 +5,15 @@ import { auth } from "../../Login/firebase";
 import useSendData from "./hooks/useSendData";
 import SocialContainer from "./SocialContainer";
 import { useGlobalContext } from "../../store/Context";
+import setLocalStorage from "./hooks/setLocalStorage";
 
 const SignUp = (props) => {
   const history = useHistory();
   const sendData = useSendData();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { isLoggedIn, setIsLoggedIn } = useGlobalContext();
+  const { setIsLoggedIn } = useGlobalContext();
+  const { loginData } = useGlobalContext();
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
@@ -21,9 +23,12 @@ const SignUp = (props) => {
       auth.createUserWithEmailAndPassword(email, password).then((res) => {
         if (res.user && res.additionalUserInfo.isNewUser) {
           console.log(res);
-          sendData(res.user.uid, res.user.email);
-          history.push("/");
-          setIsLoggedIn(true);
+          sendData(res.user.uid, res.user.email).then(() => {
+            console.log(loginData);
+            setLocalStorage(loginData);
+            history.push("/");
+            setIsLoggedIn(true);
+          });
         }
       });
     }

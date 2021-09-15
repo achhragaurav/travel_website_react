@@ -1,14 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
+import { useHistory } from "react-router";
 import { auth } from "../../Login/firebase";
+import useFetchData from "./hooks/useFetchData";
 import SocialContainer from "./SocialContainer";
+import setLocalStorage from "./hooks/setLocalStorage";
+import { useGlobalContext } from "../../store/Context";
 
 const LoginUser = (props) => {
+  const history = useHistory();
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const { loginData } = useGlobalContext();
+  const fetchData = useFetchData();
 
-  const handleLoginSubmit = (e) => {
+  // useEffect(() => {
+
+  //   return () => {
+  //     cleanup;
+  //   };
+  // }, [input]);
+
+  const dataFetchExecute = async (uid) => {
+    const pro = await fetchData(uid);
+    await console.log("U are me", pro);
+    await setLocalStorage(pro);
+    history.push("/");
+  };
+
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     auth.signInWithEmailAndPassword(loginEmail, loginPassword).then((res) => {
+      dataFetchExecute(res.user.uid);
       console.log(res);
     });
   };

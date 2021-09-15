@@ -1,5 +1,9 @@
 import firebase from "firebase/app";
+import { useGlobalContext } from "../../../store/Context";
+
 const useSendData = () => {
+  const { setLoginData } = useGlobalContext();
+
   return (uid, email) => {
     const startingData = {
       uid: uid,
@@ -15,6 +19,7 @@ const useSendData = () => {
       .database()
       .ref("Users/" + uid)
       .set(startingData);
+    setLoginData(startingData);
     return response;
   };
 };
