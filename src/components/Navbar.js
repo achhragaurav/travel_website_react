@@ -27,7 +27,11 @@ const Navbar = () => {
         ) : (
           <LoggedInCard />
         )}
-        {}
+        {isLoggedIn && (
+          <Link to="/cart" className="react-link">
+            <li className="cart">Cart</li>
+          </Link>
+        )}
       </ul>
     </nav>
   );

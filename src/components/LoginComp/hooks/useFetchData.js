@@ -17,13 +17,10 @@ const useFetchData = () => {
 
   return async (uid) => {
     const response = await firebase.database().ref("Users/" + uid);
-    await response
-      .once("value")
-      .then(snapShotFunction)
-      .then((data) => {
-        console.log(data, "Vii");
-      });
-
+    await response.once("value").then(snapShotFunction);
+    // .then((data) => {
+    //   console.log(data, "Vii");
+    // });
     return responseData;
   };
 };

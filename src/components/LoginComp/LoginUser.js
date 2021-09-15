@@ -10,7 +10,7 @@ const LoginUser = (props) => {
   const history = useHistory();
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const { loginData } = useGlobalContext();
+  const { setLoginData, setIsLoggedIn } = useGlobalContext();
   const fetchData = useFetchData();
 
   // useEffect(() => {
@@ -24,6 +24,8 @@ const LoginUser = (props) => {
     const pro = await fetchData(uid);
     await console.log("U are me", pro);
     await setLocalStorage(pro);
+    await setLoginData(pro);
+    await setIsLoggedIn(true);
     history.push("/");
   };
 

@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import { useGlobalContext } from "./store/Context";
 import Scrollbar from "smooth-scrollbar";
 import Collection from "./pages/Collection";
+import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import Error from "../src/pages/Error";
 
@@ -19,7 +20,7 @@ const smoothScrollLoader = () => {
 };
 
 function App() {
-  const { isLoggedIn } = useGlobalContext();
+  const { isLoggedIn, loginData } = useGlobalContext();
 
   useEffect(() => {
     smoothScrollLoader();
@@ -41,10 +42,13 @@ function App() {
             </Route>
             <Route path="/login">{!isLoggedIn ? <Login /> : <Error />}</Route>
             <Route path="/collection">
-              {isLoggedIn ? <Collection /> : <Error />}
+              {isLoggedIn ? <Collection loginData={loginData} /> : <Error />}
             </Route>
             <Route path="/profile">
-              {isLoggedIn ? <Profile /> : <Error />}
+              {isLoggedIn ? <Profile loginData={loginData} /> : <Error />}
+            </Route>
+            <Route path="/cart">
+              {isLoggedIn ? <Cart loginData={loginData} /> : <Error />}
             </Route>
           </Switch>
         </Router>
