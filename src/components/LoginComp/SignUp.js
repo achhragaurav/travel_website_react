@@ -13,7 +13,6 @@ const SignUp = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setIsLoggedIn } = useGlobalContext();
-  const { loginData } = useGlobalContext();
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
@@ -23,9 +22,8 @@ const SignUp = (props) => {
       auth.createUserWithEmailAndPassword(email, password).then((res) => {
         if (res.user && res.additionalUserInfo.isNewUser) {
           console.log(res);
-          sendData(res.user.uid, res.user.email).then(() => {
-            console.log(loginData);
-            setLocalStorage(loginData);
+          sendData(res.user.uid, res.user.email).then((respo) => {
+            setLocalStorage(respo);
             history.push("/");
             setIsLoggedIn(true);
           });

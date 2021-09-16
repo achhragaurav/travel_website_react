@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../../store/Context";
 const useSendData = () => {
   const { setLoginData } = useGlobalContext();
 
-  return (uid, email) => {
+  return async (uid, email) => {
     const startingData = {
       uid: uid,
       email: email,
@@ -15,12 +15,12 @@ const useSendData = () => {
       userName: "",
     };
 
-    const response = firebase
+    const response = await firebase
       .database()
       .ref("Users/" + uid)
       .set(startingData);
     setLoginData(startingData);
-    return response;
+    return startingData;
   };
 };
 

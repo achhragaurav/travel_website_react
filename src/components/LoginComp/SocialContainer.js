@@ -2,10 +2,14 @@ import React, { useCallback } from "react";
 import firebase from "firebase/app";
 import classes from "./SocialContainer.module.css";
 import { useGlobalContext } from "../../store/Context";
+import useFetchData from "../LoginComp/hooks/useFetchData";
+import setLocalStorage from "./hooks/setLocalStorage";
+import { useHistory } from "react-router";
 
 const SocialContainer = (props) => {
-  const { isLoggedIn, setIsLoggedIn } = useGlobalContext();
-
+  const { setLoginData, setIsLoggedIn } = useGlobalContext();
+  const fetchData = useFetchData();
+  const history = useHistory();
   const googleLogin = useCallback((e) => {
     e.preventDefault();
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -14,11 +18,32 @@ const SocialContainer = (props) => {
       .signInWithPopup(provider)
       .then((res) => {
         console.log(res);
-        firebase
-          .database()
-          .ref("Users/" + res.user.uid)
-          .set({ uid: res.user.uid, name: res.user.displayName });
-
+        if (res.additionalUserInfo.isNewUser) {
+          const startingData = {
+            uid: res.user.uid,
+            email: res.user.email,
+            phoneNumber: "",
+            collection: "",
+            cart: "",
+            address: "",
+            userName: "",
+          };
+          firebase
+            .database()
+            .ref("Users/" + res.user.uid)
+            .set(startingData);
+          setLocalStorage(startingData);
+          setLoginData(startingData);
+          setIsLoggedIn(true);
+          history.push("/");
+          return;
+        }
+        fetchData(res.user.uid).then((response) => {
+          console.log(response);
+          setLocalStorage(response);
+          setLoginData(response);
+        });
+        history.push("/");
         setIsLoggedIn(true);
       });
   }, []);
@@ -32,6 +57,45 @@ const SocialContainer = (props) => {
         var credential = result.credential;
         var user = result.user;
         var accessToken = credential.accessToken;
+        // Same Code
+        if (result.additionalUserInfo.isNewUser) {
+          const startingData = {
+            uid: result.user.uid,
+            email: result.user.email,
+            phoneNumber: "",
+            collection: "",
+            cart: "",
+            address: "",
+            userName: "",
+          };
+          firebase
+            .database()
+            .ref("Users/" + result.user.uid)
+            .set(startingData);
+          setLocalStorage(startingData);
+          setLoginData(startingData);
+          setIsLoggedIn(true);
+          history.push("/");
+          return;
+        }
+        fetchData(result.user.uid).then((response) => {
+          console.log(response);
+          setLocalStorage(response);
+          setLoginData(response);
+        });
+        history.push("/");
+        setIsLoggedIn(true);
+
+        // Else
+
+        fetchData(result.user.uid).then((response) => {
+          console.log(response);
+          setLocalStorage(response);
+          setLoginData(response);
+        });
+        history.push("/");
+        setIsLoggedIn(true);
+        //  Same Code
         console.log(user, accessToken);
         setIsLoggedIn(true);
       })
