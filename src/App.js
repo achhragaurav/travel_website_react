@@ -28,14 +28,13 @@ function App() {
   const fetchData = useFetchData();
 
   useEffect(() => {
+    smoothScrollLoader();
     getLocalStorage().then((data) => {
       if (!data) {
         return;
       }
 
       const internalData = JSON.parse(data);
-
-      smoothScrollLoader();
 
       if (internalData.uid) {
         console.log("BOOMa");
