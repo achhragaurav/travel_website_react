@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import classes from "./LoggedInCard.module.css";
 import LoginCardButton from "./LoginCardButton";
 import ProfileLogo from "../../assets/ProfileLogo.png";
+import useLogout from "./hooks/useLogout";
 
 const LoggedInCard = (props) => {
   const [cardMenuIsVisible, setCardMenuIsVisible] = useState(false);
-
+  const logout = useLogout();
   return (
     <div className={classes["loggedInCard"]}>
       <div
@@ -31,7 +32,7 @@ const LoggedInCard = (props) => {
             <LoginCardButton value="Collection" />
           </Link>
           <li>
-            <LoginCardButton value="Logout" />
+            <LoginCardButton value="Logout" onClick={logout} />
           </li>
         </ul>
       </div>

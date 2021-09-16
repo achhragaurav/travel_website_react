@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
@@ -11,6 +11,8 @@ import Collection from "./pages/Collection";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import Error from "../src/pages/Error";
+import getLocalStorage from "./components/LoginComp/hooks/getLocalStorage";
+import useFetchData from "./components/LoginComp/hooks/useFetchData";
 
 const smoothScrollLoader = () => {
   Scrollbar.init(document.querySelector(".App"), {
@@ -20,11 +22,31 @@ const smoothScrollLoader = () => {
 };
 
 function App() {
-  const { isLoggedIn, loginData } = useGlobalContext();
+  const { isLoggedIn, loginData, setIsLoggedIn, setLoginData } =
+    useGlobalContext();
+
+  const fetchData = useFetchData();
 
   useEffect(() => {
-    smoothScrollLoader();
+    getLocalStorage().then((data) => {
+      if (!data) {
+        return;
+      }
+
+      const internalData = JSON.parse(data);
+
+      smoothScrollLoader();
+
+      if (internalData.uid) {
+        console.log("BOOMa");
+        setIsLoggedIn(true);
+        fetchData(internalData.uid).then((data) => {
+          setLoginData(data);
+        });
+      }
+    });
   }, []);
+
   return (
     <div className="App">
       <main className="main-scrollbar">

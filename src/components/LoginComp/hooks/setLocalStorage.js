@@ -1,6 +1,6 @@
 const setLocalStorage = (data) => {
   console.log(data, "I am being");
-  localStorage.setItem(`${data.uid}`, JSON.stringify(data));
+  localStorage.setItem(`travelBeastUID`, JSON.stringify(data));
 };
 
 export default setLocalStorage;
