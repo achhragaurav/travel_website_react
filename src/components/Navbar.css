@@ -3,12 +3,14 @@
 nav {
   width: 100vw;
   height: 90px;
-  background-color: #222;
+  background-color: rgba(0, 0, 0, 0.671);
+  backdrop-filter: blur(10px);
   display: flex;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
+  /* position: absolute; */
 }
 .logo {
   width: 20%;

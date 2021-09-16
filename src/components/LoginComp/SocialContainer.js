@@ -71,11 +71,13 @@ const SocialContainer = (props) => {
           firebase
             .database()
             .ref("Users/" + result.user.uid)
-            .set(startingData);
-          setLocalStorage(startingData);
-          setLoginData(startingData);
-          setIsLoggedIn(true);
-          history.push("/");
+            .set(startingData)
+            .then(() => {
+              setLocalStorage(startingData);
+              setLoginData(startingData);
+              setIsLoggedIn(true);
+              history.push("/");
+            });
           return;
         }
         fetchData(result.user.uid).then((response) => {
@@ -85,19 +87,8 @@ const SocialContainer = (props) => {
         });
         history.push("/");
         setIsLoggedIn(true);
-
-        // Else
-
-        fetchData(result.user.uid).then((response) => {
-          console.log(response);
-          setLocalStorage(response);
-          setLoginData(response);
-        });
-        history.push("/");
-        setIsLoggedIn(true);
         //  Same Code
         console.log(user, accessToken);
-        setIsLoggedIn(true);
       })
       .catch((error) => {
         // Handle Errors here.
