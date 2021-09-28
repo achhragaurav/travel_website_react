@@ -18,7 +18,21 @@ const MainContainer = () => {
               gsap.to(boxRef.current, { rotation: "+=360" });
             }}
           >
-            <h1 ref={boxRef}>{location.location}</h1>
+            <div className={classes["left-side-main"]}>
+              <h1 ref={boxRef}>{location.location}</h1>
+              <div className={classes["previous-next"]}>
+                <button>Previous</button>
+                <span></span>
+                <button>Next</button>
+              </div>
+            </div>
+            <div className={classes["right-side-main"]}>
+              <p>{location.description}</p>
+              <div className={classes["images-right-side"]}>
+                <img src={location.moreImages[0]} alt="" />
+                <img src={location.moreImages[1]} alt="" />
+              </div>
+            </div>
           </section>
         );
       })}

@@ -8,11 +8,77 @@
   background-position: center;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-family: "Urbanist", sans-serif;
 }
 .home-section h1 {
   font-size: 7rem;
   text-shadow: 1px 1px 5px black;
   letter-spacing: 5px;
+}
+.left-side-main {
+  width: 50%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.left-side-main h1 {
+}
+.left-side-main .previous-next {
+  width: 350px;
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+}
+.left-side-main .previous-next button {
+  color: white;
+  font-size: 1.2rem;
+  background: transparent;
+  outline: none;
+  border: none;
+  font-family: "Urbanist", sans-serif;
+}
+.previous-next span {
+  min-width: 100px;
+  height: 3px;
+  background: white;
+  position: relative;
+  display: block;
+}
+.right-side-main {
+  width: 50%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.right-side-main p {
+  width: 68%;
+  text-align: left;
+}
+.images-right-side {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+}
+.right-side-main .images-right-side img {
+  width: 200px;
+}
+@media screen and (max-width: 500px) {
+  .home-section {
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-attachment: scroll !important;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Urbanist", sans-serif;
+  }
 }
