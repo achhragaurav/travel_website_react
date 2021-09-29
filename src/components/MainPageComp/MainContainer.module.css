@@ -58,15 +58,21 @@
 .right-side-main p {
   width: 68%;
   text-align: left;
+  text-shadow: 0.2px 0.2px 2px black;
+  line-height: 1.8rem;
+  letter-spacing: 1.5px;
+  font-weight: 300;
 }
 .images-right-side {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 80%;
+  width: 70%;
 }
 .right-side-main .images-right-side img {
-  width: 200px;
+  width: 250px;
+  box-shadow: 1px 1px 15px black;
+  border-radius: 15px;
 }
 @media screen and (max-width: 500px) {
   .home-section {
