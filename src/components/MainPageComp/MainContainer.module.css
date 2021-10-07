@@ -15,6 +15,9 @@
   font-size: 7rem;
   text-shadow: 1px 1px 5px black;
   letter-spacing: 5px;
+  position: relative;
+  display: block;
+  left: -40%;
 }
 .left-side-main {
   width: 50%;

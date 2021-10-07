@@ -2,9 +2,12 @@ import React, { useRef } from "react";
 import { homeData } from "./homedata";
 import classes from "./MainContainer.module.css";
 import gsap from "gsap";
+import { Tween } from "react-gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const MainContainer = () => {
-  const boxRef = useRef(null);
+  const boxRef = useRef(homeData.map(() => React.createRef()));
   return (
     <section>
       {homeData.map((location, index) => {
@@ -13,13 +16,21 @@ const MainContainer = () => {
             key={index}
             className={classes["home-section"]}
             style={{ background: `url(${location.image}) center/cover` }}
-            onDoubleClick={() => {
-              console.log(boxRef.current);
-              gsap.to(boxRef.current, { rotation: "+=360" });
-            }}
           >
             <div className={classes["left-side-main"]}>
-              <h1 ref={boxRef}>{location.location}</h1>
+              <Tween
+                to={{
+                  x: "20vw",
+                  scrollTrigger: {
+                    trigger: `#heading${index}`,
+                    toggleAction: "play none none play",
+                  },
+                }}
+              >
+                <h1 id={`heading${index}`} ref={boxRef.current[index]}>
+                  {location.location}
+                </h1>
+              </Tween>
               <div className={classes["previous-next"]}>
                 <button>Previous</button>
                 <span></span>
