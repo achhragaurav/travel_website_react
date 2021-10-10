@@ -37,16 +37,16 @@
   display: flex;
 }
 .contact-design-circles div {
-  width: 15rem;
-  height: 15rem;
+  min-width: 15vw;
+  min-height: 15vw;
   border-radius: 50%;
   border: 2px solid white;
 }
 .contact-design-circles .circleDotted {
-  width: 15rem;
-  height: 15rem;
+  min-width: 15vw;
+  min-height: 15vw;
   border-radius: 50%;
-  border: 2px dashed white;
+  border: 3px dashed white;
   position: relative;
 }
 .contact-design-circles .circleSimpleOne {
@@ -67,4 +67,45 @@
   color: rgb(87, 87, 87);
   font-family: "Lato", sans-serif;
   font-weight: 500;
+}
+@media screen and (max-width: 500px) {
+  .contact-section-main {
+    flex-direction: column;
+    height: 170vh;
+  }
+  .contact-design {
+    width: 100vw;
+    height: 40% !important;
+    background-color: #000;
+    color: white;
+  }
+  .contact-form {
+    width: 100vw;
+    height: 60% !important;
+    background-color: rgb(238, 238, 238);
+    color: black;
+  }
+  .contact-design-heading h1 {
+    font-size: 8vw;
+    padding: 3rem 10vw;
+    padding-top: 6rem;
+    padding-bottom: 0rem;
+    text-align: center;
+  }
+  .contact-design-policy p {
+    color: rgb(87, 87, 87);
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    font-size: 1.6vw;
+  }
+  .contact-design-circles div {
+    min-width: 15vw;
+    min-height: 15vw;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-top: 3rem;
+  }
+  .contact-design-policy {
+    height: 10% !important;
+  }
 }

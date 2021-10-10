@@ -61,3 +61,78 @@
 .contactUsForm form div div input:focus ::placeholder {
   color: white;
 }
+@media screen and (max-width: 500px) {
+  .contactUsForm {
+    all: unset;
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .contactUsForm form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    justify-content: space-around;
+    padding-top: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+  .contact-us-form-name {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 25%;
+    justify-content: space-around;
+    padding: 0rem;
+    align-items: center;
+  }
+  .contact-us-form-name div {
+    all: unset;
+    width: 100%;
+    padding: 0;
+    margin: 1rem;
+    text-align: center;
+  }
+  .contact-us-form-message {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .contact-us-form-message div {
+    all: unset;
+    width: 100%;
+    padding: 0;
+    margin: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-us-form-message div input {
+    all: unset;
+    width: 80%;
+  }
+  .contact-us-form-email-pass {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 25%;
+    justify-content: space-around;
+    padding: 0rem;
+    margin-top: 1rem;
+    text-align: center;
+    align-items: center;
+  }
+  .contact-us-form-email-pass div {
+    all: unset;
+    width: 100%;
+    padding: 0;
+    margin: 1rem;
+    text-align: center;
+  }
+}

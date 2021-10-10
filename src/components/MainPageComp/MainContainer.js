@@ -18,19 +18,21 @@ const MainContainer = () => {
             style={{ background: `url(${location.image}) center/cover` }}
           >
             <div className={classes["left-side-main"]}>
-              <Tween
-                to={{
-                  x: "20vw",
-                  scrollTrigger: {
-                    trigger: `#heading${index}`,
-                    toggleAction: "play none none play",
-                  },
-                }}
-              >
-                <h1 id={`heading${index}`} ref={boxRef.current[index]}>
-                  {location.location}
-                </h1>
-              </Tween>
+              <span id={classes["heading-span"]}>
+                <Tween
+                  to={{
+                    y: "-8vw",
+                    scrollTrigger: {
+                      trigger: `#heading${index}`,
+                      toggleAction: "play none none play",
+                    },
+                  }}
+                >
+                  <h1 id={`heading${index}`} ref={boxRef.current[index]}>
+                    {location.location}
+                  </h1>
+                </Tween>
+              </span>
               <div className={classes["previous-next"]}>
                 <button>Previous</button>
                 <span></span>

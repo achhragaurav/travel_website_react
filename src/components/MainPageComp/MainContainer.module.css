@@ -11,13 +11,22 @@
   justify-content: space-around;
   font-family: "Urbanist", sans-serif;
 }
+.home-section #heading-span {
+  width: 40vw;
+  height: 15 vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .home-section h1 {
-  font-size: 7rem;
+  font-size: 7vw;
   text-shadow: 1px 1px 5px black;
   letter-spacing: 5px;
   position: relative;
   display: block;
-  left: -40%;
+  top: 8vw;
+  left: 0;
 }
 .left-side-main {
   width: 50%;
@@ -65,6 +74,7 @@
   line-height: 1.8rem;
   letter-spacing: 1.5px;
   font-weight: 300;
+  font-size: 1vw;
 }
 .images-right-side {
   display: flex;
@@ -89,5 +99,9 @@
     align-items: center;
     justify-content: space-around;
     font-family: "Urbanist", sans-serif;
+    flex-direction: column;
+  }
+  .left-side-main .previous-next {
+    display: none;
   }
 }
